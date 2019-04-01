@@ -38,7 +38,7 @@ namespace CarLeasingApp.API.Data
             return true;
         }
 
-        public async Task<User> RegisterAsync(User user, string password)
+        public async Task<User> Register(User user, string password)
         {
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
@@ -67,11 +67,6 @@ namespace CarLeasingApp.API.Data
                 return true;
 
             return false;
-        }
-
-        public Task<User> Register(User user, string password)
-        {
-            throw new NotImplementedException();
         }
     }
 }

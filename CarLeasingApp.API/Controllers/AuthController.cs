@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using CarLeasingApp.API.Data;
+using CarLeasingApp.API.Dtos;
 using CarLeasingApp.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,21 +18,21 @@ namespace CarLeasingApp.API.Controllers
 
         [HttpPost("register")]
 
-        public async Task<IActionResult> Register(string username, string password)
+        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
             // Validate request
 
-            username = username.ToLower();
+            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
-            if (await _repo.UserExist(username))
+            if (await _repo.UserExist(userForRegisterDto.Username))
                 return BadRequest("Username already exists");
 
             var userToCreate = new User
             {
-                Username = username
+                Username = userForRegisterDto.Username
             };
 
-            var createdUser = await _repo.Register(userToCreate, password);
+            var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
             // Need to return CreatedAtRoute(), currently there's no method to get user ToDo later.
             return StatusCode(201);
