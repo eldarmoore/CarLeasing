@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ValueComponent } from './components/value/value.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatListModule } from '@angular/material';
 import { NavComponent } from './components/nav/nav.component';
@@ -15,7 +14,6 @@ import { RegisterComponent } from './components/register/register.component';
 @NgModule({
    declarations: [
       AppComponent,
-      ValueComponent,
       NavComponent,
       HomeComponent,
       RegisterComponent
