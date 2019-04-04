@@ -1,0 +1,48 @@
+<form #registerForm="ngForm" (ngSubmit)="register()">
+  
+  <div class="form-group">
+    <label for="inputFullName">Full Name</label>
+    <input type="text" class="form-control" id="inputFullName" placeholder="Full Name">
+  </div>
+
+  <div class=form-row>
+    <div class="form-group col-md-8">
+      <label for="inputID">ID</label>
+      <input type="text" class="form-control" id="inputID" placeholder="ID ex. 01231321">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Birth Date</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputUsername">Username</label>
+      <input type="username" class="form-control" id="inputUsername" required name="username" [(ngModel)]="model.username" placeholder="Username">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword">Password</label>
+      <input type="password" class="form-control" id="inputPassword" required name="password" [(ngModel)]="model.password" placeholder="Password">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="Email">Email</label>
+      <input type="text" class="form-control" id="Email">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Gender</label>
+      <select id="inputState" class="form-control">
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group text-center">
+    <button style="width: 48%" type="submit" class="btn btn-primary float-left">Register</button>
+    <button style="width: 48%" type="button" class="btn btn-danger float-right" (click)="cancel()">Cancel</button>
+  </div>
+</form>
