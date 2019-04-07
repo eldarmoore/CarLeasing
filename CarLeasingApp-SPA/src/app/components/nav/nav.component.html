@@ -1,8 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-button><i class="material-icons">
-        home
-        </i> CarLeasing</button>
+    <button mat-button><mat-icon>home</mat-icon> CarLeasing</button>
     <button mat-button>Button 1</button>
     <button mat-button>Button 2</button>
     <span class="example-spacer"></span>
@@ -13,15 +11,11 @@
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
-          <span>Redial</span>
-        </button>
-        <button mat-menu-item disabled>
-          <mat-icon>voicemail</mat-icon>
-          <span>Check voicemail</span>
+          <mat-icon>person_pin</mat-icon>
+          <span>Profile</span>
         </button>
         <button mat-menu-item (click)="logout()">
-          <mat-icon>notifications_off</mat-icon>
+          <mat-icon>exit_to_app</mat-icon>
           <span class="nav-link">Logout</span>
         </button>
       </mat-menu>
