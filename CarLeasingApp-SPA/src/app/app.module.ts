@@ -30,6 +30,7 @@ import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
 import { CarsComponent } from './components/cars/cars.component';
 import { UsersComponent } from './components/users/users.component';
+import {AuthGuard} from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { UsersComponent } from './components/users/users.component';
   ],
   providers: [
     AuthService,
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider,
+    AuthGuard
   ],
   bootstrap: [
     AppComponent

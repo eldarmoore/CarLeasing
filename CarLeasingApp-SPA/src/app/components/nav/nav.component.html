@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-button [routerLink]="['home']"><mat-icon>home</mat-icon> CarLeasing</button>
-    <button mat-button [routerLink]="['users']" routerLinkActive="mat-accent">Button 1</button>
-    <button mat-button [routerLink]="['cars']" routerLinkActive="mat-accent">Button 2</button>
+    <button mat-button [routerLink]="['users']" routerLinkActive="mat-accent">Users</button>
+    <button mat-button [routerLink]="['cars']" routerLinkActive="mat-accent">Cars</button>
     <span class="example-spacer"></span>
     <div *ngIf="loggedIn()">
       <span>Welcome {{authService.decodedToken?.unique_name | titlecase}}</span>
