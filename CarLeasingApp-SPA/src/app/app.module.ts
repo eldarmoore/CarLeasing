@@ -28,6 +28,8 @@ import {CarouselComponent} from './components/carousel/carousel.component';
 import {ErrorInterceptorProvider} from './services/error.interceptor';
 import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
+import { CarsComponent } from './components/cars/cars.component';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {appRoutes} from './routes';
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    CarouselComponent
+    CarouselComponent,
+    CarsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
