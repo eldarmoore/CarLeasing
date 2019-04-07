@@ -13,6 +13,6 @@ namespace CarLeasingApp.API.Models
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
-        public ICollection<Photo> Photos { get; set; }
+        public ICollection<UserPhoto> Photos { get; set; }
     }
 }
