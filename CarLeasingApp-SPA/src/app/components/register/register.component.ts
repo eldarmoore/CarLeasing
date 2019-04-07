@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { AlertifyService } from 'src/app/services/alertify.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -13,16 +13,16 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
 
-  constructor(private authService: AuthService, private alertify: AlertifyService) { }
+  constructor(private authService: AuthService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
   register() {
     this.authService.register(this.model).subscribe(() => {
-      this.alertify.success('registration successful');
+      this.snackBar.open('registration successful', 'x', {duration: 2000});
     }, error => {
-      this.alertify.error(error);
+      this.snackBar.open(error, 'x', {duration: 2000});
     });
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { AlertifyService } from 'src/app/services/alertify.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-nav',
@@ -11,16 +11,16 @@ export class NavComponent implements OnInit {
 
   model: any = {};
 
-  constructor(public authService: AuthService, private alertify: AlertifyService) { }
+  constructor(public authService: AuthService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
   login() {
     this.authService.login(this.model).subscribe(next => {
-      this.alertify.success('Logged in successfully');
+      this.snackBar.open('Logged in successfully', 'x', {duration: 2000});
     }, error => {
-      this.alertify.error(error);
+      this.snackBar.open(error, 'x', {duration: 2000});
     });
   }
 
@@ -30,7 +30,10 @@ export class NavComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    this.alertify.message('logged out');
+    this.snackBar.open('logged out', 'x', {
+      duration: 2000,
+      panelClass: ['blue-snackbar']
+    });
   }
 }
 

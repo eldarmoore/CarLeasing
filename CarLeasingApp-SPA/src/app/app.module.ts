@@ -4,14 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatListModule, MatSnackBarModule, MatToolbarModule, MatIconModule, MatInputModule, MatMenuModule, MatFormFieldModule } from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 import { NavComponent } from './components/nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ErrorInterceptorProvider } from './services/error.interceptor';
-import { AlertifyService } from './services/alertify.service';
 
 @NgModule({
    declarations: [
@@ -25,14 +26,11 @@ import { AlertifyService } from './services/alertify.service';
       HttpClientModule,
       FormsModule,
       BrowserAnimationsModule,
-      MatButtonModule,
-      MatCheckboxModule,
-      MatListModule
+      MatButtonModule, MatCheckboxModule, MatListModule, MatSnackBarModule, MatToolbarModule, MatIconModule, MatInputModule, MatMenuModule, MatFormFieldModule, MatSelectModule, MatCardModule
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvider,
-      AlertifyService
+      ErrorInterceptorProvider
    ],
    bootstrap: [
       AppComponent
