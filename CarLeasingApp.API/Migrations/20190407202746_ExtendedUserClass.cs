@@ -8,26 +8,55 @@ namespace CarLeasingApp.API.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterColumn<string>(
+                name: "Username",
+                table: "Users",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<byte[]>(
+                name: "PasswordSalt",
+                table: "Users",
+                nullable: false,
+                oldClrType: typeof(byte[]),
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<byte[]>(
+                name: "PasswordHash",
+                table: "Users",
+                nullable: false,
+                oldClrType: typeof(byte[]),
+                oldNullable: true);
+
             migrationBuilder.AddColumn<DateTime>(
                 name: "DateOfBirth",
                 table: "Users",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "Email",
                 table: "Users",
-                nullable: true);
+                nullable: false,
+                defaultValue: "");
 
             migrationBuilder.AddColumn<string>(
                 name: "FullName",
                 table: "Users",
-                nullable: true);
+                nullable: false,
+                defaultValue: "");
 
             migrationBuilder.AddColumn<string>(
                 name: "Gender",
                 table: "Users",
-                nullable: true);
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<int>(
+                name: "PassportID",
+                table: "Users",
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.CreateTable(
                 name: "UserPhotos",
@@ -53,6 +82,12 @@ namespace CarLeasingApp.API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_PassportID",
+                table: "Users",
+                column: "PassportID",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserPhotos_UserId",
                 table: "UserPhotos",
                 column: "UserId");
@@ -62,6 +97,10 @@ namespace CarLeasingApp.API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "UserPhotos");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Users_PassportID",
+                table: "Users");
 
             migrationBuilder.DropColumn(
                 name: "DateOfBirth",
@@ -78,6 +117,28 @@ namespace CarLeasingApp.API.Migrations
             migrationBuilder.DropColumn(
                 name: "Gender",
                 table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "PassportID",
+                table: "Users");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Username",
+                table: "Users",
+                nullable: true,
+                oldClrType: typeof(string));
+
+            migrationBuilder.AlterColumn<byte[]>(
+                name: "PasswordSalt",
+                table: "Users",
+                nullable: true,
+                oldClrType: typeof(byte[]));
+
+            migrationBuilder.AlterColumn<byte[]>(
+                name: "PasswordHash",
+                table: "Users",
+                nullable: true,
+                oldClrType: typeof(byte[]));
         }
     }
 }
