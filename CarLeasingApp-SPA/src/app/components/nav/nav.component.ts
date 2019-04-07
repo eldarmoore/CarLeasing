@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,7 @@ export class NavComponent implements OnInit {
 
   model: any = {};
 
-  constructor(public authService: AuthService, private snackBar: MatSnackBar) { }
+  constructor(public authService: AuthService, private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,8 @@ export class NavComponent implements OnInit {
       this.snackBar.open('Logged in successfully', 'x', {duration: 2000});
     }, error => {
       this.snackBar.open(error, 'x', {duration: 2000});
+    }, () => {
+      this.router.navigate(['/cars']);
     });
   }
 
@@ -30,10 +33,8 @@ export class NavComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    this.snackBar.open('logged out', 'x', {
-      duration: 2000,
-      panelClass: ['blue-snackbar']
-    });
+    this.snackBar.open('logged out', 'x', {duration: 2000, panelClass: ['blue-snackbar']});
+    this.router.navigate(['/home']);
   }
 }
 
