@@ -1,3 +1,4 @@
+using System.Linq;
 using AutoMapper;
 using CarLeasingApp.API.Dtos;
 using CarLeasingApp.API.Models;
@@ -8,8 +9,21 @@ namespace CarLeasingApp.API.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<User, UserForListDto>();
-            CreateMap<User, UserForDetailesDto>();
+            CreateMap<User, UserForListDto>()
+            .ForMember(dest => dest.PhotoUrl, opt => {
+                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);
+            })
+            .ForMember(dest => dest.Age, opt => {
+                opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
+            });
+            CreateMap<User, UserForDetailesDto>()
+            .ForMember(dest => dest.PhotoUrl, opt => {
+                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);
+            })
+            .ForMember(dest => dest.Age, opt => {
+                opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
+            });
+            CreateMap<UserPhoto, UserPhotosForDetailesDto>();
         }
     }
 }

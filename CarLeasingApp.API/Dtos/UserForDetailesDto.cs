@@ -14,6 +14,6 @@ namespace CarLeasingApp.API.Dtos
         public int Age { get; set; }
         public string Email { get; set; }
         public string PhotoUrl { get; set; }
-        public ICollection<UserPhoto> Photos { get; set; }
+        public ICollection<UserPhotosForDetailesDto> Photos { get; set; }
     }
 }
